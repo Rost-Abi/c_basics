@@ -6,11 +6,11 @@
 /*   By: abi <abi@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 21:37:34 by abi               #+#    #+#             */
-/*   Updated: 2024/05/04 18:34:14 by abi              ###   ########.fr       */
+/*   Updated: 2024/05/04 19:02:18 by abi              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include <stdio.h>
 
 /*
 • Create a function which sorts an array of integers by ascending order.
@@ -26,20 +26,26 @@ void ft_swap(int *a, int *b)
     }
 }
 
-void ft_sort_int_tab(int *tab, int *size)
+void ft_sort_int_tab(int *tab, int size)
 {
- int i = 0;
-  while (i < size -1)
-  {
-    if(tab[i] > tab[i + 1])
-        ft_swap(&tab[i], &tab[i + 1]);
-  }
+    int i;
+    while (size > 2)
+    {
+        i = 0;
+        while (i < size - 1)
+        {
+            if(tab[i] > tab[i + 1])
+                ft_swap(&tab[i], &tab[i + 1]);
+            i++;
+        }
+        size--;
+    }
 }
 
 int main()
 {
-    int arr[] = {10, 7, 5, 1, 3};
-    ft_sort_int_tab(arr, sizeof(arr)/*/ sizeof(int)*/);
-    for(int i = 0; i < 5; i++)
+    int arr[] = {10, 7, 5, 1, 5, 2, 8, 4, 6, 9};
+    ft_sort_int_tab(arr, sizeof(arr) / sizeof(int));
+    for(int i = 0; i < (sizeof(arr) / sizeof(int)); i++)
         printf("%d, ", arr[i]);
 }
